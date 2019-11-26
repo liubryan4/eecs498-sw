@@ -7,11 +7,11 @@ using namespace std;
 
 int32_t embedded_buffer[max_unique_words][embedding_size];
 
-void read_embeddings(uint32_t addr, uint32_t * data_out) {
-    memcpy(data_out, &embedded_buffer[addr], emb_line_size);
+void inline read_embeddings(uint32_t addr, uint32_t * data_out) {
+    data_out = embedded_buffer[addr];
 }
 
-void write_embeddings(string fname) {
+void inline write_embeddings(string fname) {
     ifstream file;
     file.open(fname);
     int32_t val;
